@@ -69,4 +69,9 @@ cd bin/
 jar cvfm myFirstXBeeApp.jar ../manifest.mf .
 mv myFirstXBeeApp.jar ../
 cd ..
-java -Djava.library.path=libs/native/Linux/x86_64-unknown-linux-gnu/ -jar myFirstXBeeApp.jar
+
+if [ "$(uname -m)" = "i686"]; then
+  java -Djava.library.path=libs/native/Linux/i686-pc-linux-gnu/ -jar myFirstXBeeApp.jar
+else
+  java -Djava.library.path=libs/native/Linux/x86_64-unknown-linux-gnu/ -jar myFirstXBeeApp.jar
+fi
