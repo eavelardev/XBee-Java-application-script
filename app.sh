@@ -6,7 +6,7 @@
 
 wget https://github.com/digidotcom/XBeeJavaLibrary/releases/download/v1.1.1/XBJL-1.1.1.zip
 apt-get install unzip
-unzip XBJL-1.1.1.zip
+unzip -tq XBJL-1.1.1.zip
 mkdir myFirstXBeeApp
 cd myFirstXBeeApp/
 mkdir -p src/com/digi/xbee/example libs bin
