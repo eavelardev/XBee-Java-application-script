@@ -70,8 +70,15 @@ jar cvfm myFirstXBeeApp.jar ../manifest.mf .
 mv myFirstXBeeApp.jar ../
 cd ..
 
-if [ "$(uname -m)" = "i686"]; then
+ARCH="$(uname -m)"
+
+if [ "$ARCH" = "i686" ]; then
   java -Djava.library.path=libs/native/Linux/i686-pc-linux-gnu/ -jar myFirstXBeeApp.jar
-else
+elif [ "$ARCH" = "x86_64" ]; then
   java -Djava.library.path=libs/native/Linux/x86_64-unknown-linux-gnu/ -jar myFirstXBeeApp.jar
+elif [ "$ARCH" = "armv7" ]; then
+  apt-get install librxtx-java
+  java -Djava.library.path=/usr/lib/jni/ -jar myFirstXBeeApp.jar
+else
+  echo "$ARCH arquitecture unsupported"
 fi
